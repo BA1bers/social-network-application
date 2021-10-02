@@ -1,0 +1,24 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "Challenge 18 U of A",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BA1bers/social-network-application"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BA1bers/social-network-application"
+  },
+  "homepage": "https://github.com/BA1bers/social-network-application#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.1"
+  }
+}
