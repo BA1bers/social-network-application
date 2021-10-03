@@ -20,9 +20,9 @@ module.exports = {
                     .then((user) => {
                         user.thoughts.push(thought._id)
                         User.replaceOne({ _id: user._id }, user)
-                        .then(() => {
-                            res.json(thought)
-                        })
+                            .then(() => {
+                                res.json(thought)
+                            })
                     })
             })
     },
