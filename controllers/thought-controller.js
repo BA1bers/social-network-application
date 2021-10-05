@@ -1,18 +1,37 @@
-const { Thought, User } = require('../models')
+const { Thought, User, Reaction } = require('../models')
 
-module.exports = {
-    getThoughts(req, res) {
-        Thought.find()
-            .then((responses) => {
-                res.json(responses)
-            })
+const thoughtController = {
+    getAllThoughts(req, res) {
+        Thought.find({})
+            .populate({ path: 'reactions', select: '-__v' })
+            .select('-__v')
+            .sort({ _id: -1 })
+            .then((data) => res.json(data))
+            .catch((err) => {
+                console.log(err);
+                res.sendStatus(400);
+            });
     },
-    getThoughById(req, res) {
-        Thought.findById(req.params.id)
-            .then((responses) => {
-                res.json(responses)
+
+
+    getThoughtById({ params }, res) {
+        Thought.findOne({ _id: params.id })
+            .populate({ path: "thought", select: "-__v" })
+            .populate({ path: "reactions", select: "-__v" })
+            .select("-__v")
+            .then((data) => {
+                console.log(data);
+                if (!data) {
+                    res.status(404).json({ message: "There are no thoughts found with this id" });
+                }
+                res.json(data);
             })
+            .catch((err) => {
+                console.log(err);
+                res.status(400).json(err);
+            });
     },
+
     createThought(req, res) {
         Thought.create(req.body)
             .then((thought) => {
@@ -24,19 +43,29 @@ module.exports = {
                                 res.json(thought)
                             })
                     })
-            })
+                    .catch((err) => {
+                        console.log(err);
+                        res.status(400).json(err);
+                    });
+            });
     },
-    updateThought(req, res) {
-        Thought.findByIdAndUpdate(req.params.id, req.body)
-            .then((responses) => {
-                res.json(responses)
-            })
-    },
-    deleteThought(req, res) {
-        Thought.findByIdAndDelete(req.params.id)
-            .then((responses) => {
-                res.json(responses)
-            })
-    }
 
+    updateThought(req, res) {
+        Thought.findOneAndUpdate({ id: params.id }, body, { new: true, runValidators: true })
+            .then((responses) => {
+                res.json(responses)
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(400).json(err);
+            })
+    },
+
+    deleteThought({ params }, res) {
+        Thought.findOneAndDelete({ id: params.id })
+            .then(thoughtData => res.json(thoughtData))
+            .catch(err => res.json(err))
+    }
 }
+
+module.exports = thoughtController;
