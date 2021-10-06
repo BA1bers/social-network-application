@@ -2,8 +2,7 @@
   ## Table of Contents:
   * [Title](#title)
   * [Description](#description)
-  * [How to install](#installation)
-  * [Usage](#usage)
+  * [Technologies](#technologies)
   * [Tests](#tests)
   * [Credits](#credits)
   * [License](#license)
@@ -12,25 +11,33 @@
 
 ## Description 
 
-## How to install 
- 
+As a social media startup, I wanted an API for my social network that uses a NoSQL database so that my website can handle large amounts of unstructured data
 
-## Usage 
- 
+## Technologies
+
+  Javascript
+  NoSQl
+  Mongoose
+  Express.js
+  Insomnia
 
 ## Tests 
- 
+gifs to be added soon!
 
-## Credits 
+## Credits
+
 Created By: Brent Albers
 
 ## License
+
 This project is copyrighted under the 
 ![BSD license](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)
 [BSD license](https://opensource.org/licenses/BSD-3-Clause)
 
 ## Email
+
 Have any questions? feel free to email me at brent.albers@yahoo.com. 
 
 ## GitHub
+
 Follow me on github where you can also ask me questions here at https://github.com/BA1bers.
