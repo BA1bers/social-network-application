@@ -32,7 +32,7 @@ const thoughtController = {
             });
     },
 
-    createThought(req, res) {
+    addThought(req, res) {
         Thought.create(req.body)
             .then((thought) => {
                 User.findById(req.body.userId)
@@ -61,7 +61,7 @@ const thoughtController = {
             })
     },
 
-    deleteThought({ params }, res) {
+    removeThought({ params }, res) {
         Thought.findOneAndDelete({ id: params.id })
             .then(thoughtData => res.json(thoughtData))
             .catch(err => res.json(err))
